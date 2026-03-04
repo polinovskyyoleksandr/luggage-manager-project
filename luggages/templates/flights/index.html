@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/flights/flight-index.css' %}"
+/>
+{% endblock %} {% block content %}
+
+<h1>All Flights</h1>
+
+<ul>
+{% for flight in flights %}
+  <li>{{flight.flight_number}}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
