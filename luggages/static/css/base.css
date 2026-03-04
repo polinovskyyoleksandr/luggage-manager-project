@@ -1,0 +1,17 @@
+#aereo {
+    mix-blend-mode: multiply;
+    position: fixed;
+    top: 10%; 
+    right: -1000px; 
+    width: 800px;
+    transition: transform 2s linear;
+    transform: translateX(0) translateY(0);
+    z-index: 1000;
+    pointer-events: none; 
+}
+
+#aereo.fly {
+    transform: translateX(-120vw) translateY(-50px); 
+    opacity: 0;
+    transition: transform 2s linear, opacity 2s linear;
+}

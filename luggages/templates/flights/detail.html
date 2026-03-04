@@ -7,9 +7,40 @@
 
 <h1> Flight Detail </h1>
 
-<p> {{ flight.flight_number }}</p>
+<p> {{ flight.destination }} {{ flight.flight_number }} {{flight.departure_date}} {{flight.return_date}} </p>
 
 <a href="{% url 'flight-update' flight.id %}" class="btnEdit">Edit</a>
 <a href="{% url 'flight-delete' flight.id %}" class="btnDelete">Delete</a>
+
+<h2>Your Luggage</h2>
+
+<table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Size</th>
+          <th>Color</th>
+          <th>Items</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for luggage in flight.luggage_set.all %}
+          <tr>
+            <td>{{luggage.get_type_display}}</td>
+            <td>{{luggage.get_size_display}}</td>
+            <td>{{luggage.color}}</td>
+            <td>{{luggage.items}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+<h2>Add Luggage</h2>
+
+<form action="{% url 'add-luggage' flight.id %}" method="post" class="subsection-content" autocomplete="off">
+    {% csrf_token %} 
+    {{ luggage_form.as_p }}
+    <button type="submit" class="btnSubmit">Add Luggage</button>
+</form>
 
 {% endblock %}

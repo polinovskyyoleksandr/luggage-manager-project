@@ -1,17 +1,21 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <title>Luggage Manager</title>
 </head>
 <body>
+    <img src="{% static 'images/aereo.png' %}" id="aereo" alt="aereo">
     <header>
       <nav>
         <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
-            <li><a href="{% url 'flight-index' %}">Your Flights</a></li>
+            <li><a href="{% url 'flight-index' %}" class="flight-index">Your Flights</a></li>
         </ul>
       </nav>
     </header>
@@ -19,5 +23,6 @@
      {% block content %} 
      {% endblock %}
      </main>
+     <script src="{% static 'js/base.js' %}"></script>
 </body>
 </html>
