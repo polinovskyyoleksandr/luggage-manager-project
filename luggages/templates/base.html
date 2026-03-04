@@ -9,8 +9,9 @@
     <header>
       <nav>
         <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="/flights">Your Flights</a></li>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'flight-index' %}">Your Flights</a></li>
         </ul>
       </nav>
     </header>

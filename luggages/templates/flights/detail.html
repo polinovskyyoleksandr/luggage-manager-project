@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/flights/flight-detail.css' %}"
+/>
+{% endblock %} {% block content %}
+
+<h1> Flight Detail </h1>
+
+<p> {{ flight.flight_number }}</p>
+
+<a href="{% url 'flight-update' flight.id %}" class="btnEdit">Edit</a>
+<a href="{% url 'flight-delete' flight.id %}" class="btnDelete">Delete</a>
+
+{% endblock %}
