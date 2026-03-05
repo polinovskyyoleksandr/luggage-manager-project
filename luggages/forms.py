@@ -4,7 +4,7 @@ from .models import Flight, Luggage
 class FlightForm(forms.ModelForm):
     class Meta:
         model = Flight
-        fields = '__all__'
+        fields = ['flight_number', 'destination', 'departure_date', 'return_date']
         widgets = {
             'departure_date': forms.DateInput(
                 format='%d-%m-%Y',

@@ -6,22 +6,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Pacifico&family=Quattrocento&family=Shrikhand&display=swap" rel="stylesheet">
+    {% block head %}{% endblock %}
     <title>Luggage Manager</title>
 </head>
 <body>
     <img src="{% static 'images/aereo.png' %}" id="aereo" alt="aereo">
     <header>
       <nav>
+        <div class="logo">
+            <img src="{% static 'images/logo-bianco.png' %}" id="logo-bianco" alt="logo-bianco">
+        </div>
+        <div class="actions">
         <ul>
             {% if user.is_authenticated %}
-                <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="{% url 'flight-index' %}" class="flight-index">Your Flights</a></li>
-                <li><a href="{% url 'flight-create' %}" class="flight-index">Add a flight</a></li
+                <li><a href="{% url 'flight-create' %}" class="flight-index">Add a flight</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li>
+                    <form id="logout-form" method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Log out</button>
+                    </form>
+                </li>
             {% else %}
                 <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="{% url 'home' %}">Login</a></li>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
             {% endif %}
         </ul>
+        </div>
       </nav>
     </header>
     <main>

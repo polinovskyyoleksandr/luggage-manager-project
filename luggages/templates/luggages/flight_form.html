@@ -5,18 +5,21 @@
 />
 {% endblock %} {% block content %}
 
+    <div class="logo-nero">
+    <img src="{% static 'images/logo-con-sfondo.png' %}" id="logo-nero" alt="logo-nero">
+    </div>
 {% if object %}
-    <h1>Edit flight: {{ object.name }}</h1>
+    <h1>Edit flight: {{ object.flight_number }}</h1>
   {% else %}
     <h1>Add a new flight!</h1>
-  {% endif %}
+{% endif %}
 
 <form action="" method="post" class="form-container">
   {% csrf_token %}
     <table>
       {{ form.as_table }}
     </table>
-  <button type="submit" class="btn submit">Submit!</button>
+  <button type="submit" class="btnSubmit">Submit!</button>
 </form>
 
 {% endblock %}

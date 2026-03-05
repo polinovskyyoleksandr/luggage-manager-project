@@ -4,18 +4,18 @@
   href="{% static 'css/home.css' %}"
 />
 {% endblock %} {% block content %}
-
-<h1>Home page</h1>
-
-{% endblock %} {% block content %}
-
-<section>
-  <form action="{% url 'home' %}" method="post" class="login">
+<div class="logo-nero">
+ <img src="{% static 'images/logo-con-sfondo.png' %}" id="logo-nero" alt="logo-nero">  
+</div>
+{% if not user.is_authenticated %}
+  <section>
     <h1>Login</h1>
-    {% csrf_token %} {{ form.as_p }}
-    <input type="hidden" name="next" value="{{ next }}" />
-    <button type="submit" class="btnSubmit">Login</button>
-  </form>
-</section>
+    <form action="{% url 'home' %}" method="post" class="login">
+      {% csrf_token %} {{ form.as_p }}
+      <input type="hidden" name="next" value="{{ next }}" />
+      <button type="submit" class="btnSubmit">Login</button>
+    </form>
+  </section>
+{% endif %}
 
 {% endblock %}

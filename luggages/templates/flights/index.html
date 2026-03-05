@@ -4,15 +4,21 @@
   href="{% static 'css/flights/flight-index.css' %}"
 />
 {% endblock %} {% block content %}
-
-<nav><ul><li><a href="{% url 'flight-create' %}">Add a flight</a></li></ul></nav>
-
-<h1>All Flights</h1>
-
-<ul>
+    <div class="logo-nero">
+    <img src="{% static 'images/logo-con-sfondo.png' %}" id="logo-nero" alt="logo-nero">
+    </div>
+<h1 class="allFlights">All Flights</h1>
+<div class="container">
+<ul class="everyFlight">
 {% for flight in flights %}
-  <a href="{% url 'flight-detail' flight.id %}"><li>{{ flight.destination }} {{flight.flight_number}} {{flight.departure_date}} {{flight.return_date}}</li></a>
+  <li class="specificFlight">
+    <a href="{% url 'flight-detail' flight.id %}" class="flightList">
+      <h1>{{ flight.destination }}</h1> <p>Flight number: {{ flight.flight_number }} on {{ flight.departure_date }} to {{ flight.return_date }}</p>  
+    </a>
+  </li>
+{% empty %}
+  <p>No flights yet.</p>
 {% endfor %}
 </ul>
-
+</div>
 {% endblock %}

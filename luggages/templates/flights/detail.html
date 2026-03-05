@@ -4,15 +4,19 @@
   href="{% static 'css/flights/flight-detail.css' %}"
 />
 {% endblock %} {% block content %}
-
+    <div class="logo-nero">
+    <img src="{% static 'images/logo-con-sfondo.png' %}" id="logo-nero" alt="logo-nero">
+    </div>
+  <div class="noLogo">
+<div class="confirmedThings">
 <h1> Flight Detail </h1>
 
-<p> {{ flight.destination }} {{ flight.flight_number }} {{flight.departure_date}} {{flight.return_date}} </p>
-
+<p class="pDetails">Destination: <strong>{{ flight.destination }}</strong>. Flight number: {{ flight.flight_number }} on {{flight.departure_date}} to {{flight.return_date}} </p>
+<div class="btnActions">
 <a href="{% url 'flight-update' flight.id %}" class="btnEdit">Edit</a>
 <a href="{% url 'flight-delete' flight.id %}" class="btnDelete">Delete</a>
-
-<h2>Your Luggage</h2>
+</div>
+<h1>Your Luggage</h1>
 
 <table>
       <thead>
@@ -20,7 +24,7 @@
           <th>Type</th>
           <th>Size</th>
           <th>Color</th>
-          <th>Items</th>
+          <th class="items" id="itemsTh">Items</th>
         </tr>
       </thead>
       <tbody>
@@ -29,18 +33,20 @@
             <td>{{luggage.get_type_display}}</td>
             <td>{{luggage.get_size_display}}</td>
             <td>{{luggage.color}}</td>
-            <td>{{luggage.items}}</td>
+            <td class="items">{{luggage.items}}</td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
-    
-<h2>Add Luggage</h2>
+</div>
+<div class="luggage-form">
+<h1>Add Luggage</h1>
 
 <form action="{% url 'add-luggage' flight.id %}" method="post" class="subsection-content" autocomplete="off">
     {% csrf_token %} 
     {{ luggage_form.as_p }}
     <button type="submit" class="btnSubmit">Add Luggage</button>
 </form>
-
+</div>
+</div>
 {% endblock %}
