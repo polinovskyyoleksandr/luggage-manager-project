@@ -3,7 +3,7 @@ from . import views
 from django.views.generic import ListView
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.Home.as_view(), name='home'),
     path('about/', views.about, name='about'),
     path('flights/', views.flight_index, name='flight-index' ),
     path('flights/<int:flight_id>', views.flight_detail, name = 'flight-detail'),     

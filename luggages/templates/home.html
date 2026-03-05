@@ -7,4 +7,15 @@
 
 <h1>Home page</h1>
 
+{% endblock %} {% block content %}
+
+<section>
+  <form action="{% url 'home' %}" method="post" class="login">
+    <h1>Login</h1>
+    {% csrf_token %} {{ form.as_p }}
+    <input type="hidden" name="next" value="{{ next }}" />
+    <button type="submit" class="btnSubmit">Login</button>
+  </form>
+</section>
+
 {% endblock %}

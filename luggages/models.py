@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -30,6 +31,8 @@ class Flight(models.Model):
     
     def get_absolute_url(self):
         return reverse('flight-detail', kwargs={'flight_id': self.id})
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
 class Luggage(models.Model):
     type=models.CharField(max_length=50, choices=TYPES, default=TYPES[2][0])
