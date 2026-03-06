@@ -39,7 +39,7 @@ h1 {
     align-self: center;
 }
 
-.login > p {
+.formSignup, .login > p {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -57,7 +57,7 @@ h1 {
   background-color: #cae8ff;
 }
 
-.login input {
+.formSignup, .login input {
   padding: 2px 4px;
 }
 
@@ -74,4 +74,30 @@ h1 {
     mix-blend-mode: multiply;
     width: 500px;
     height: 500px;
+}
+
+.formSignup {
+    margin-top: -50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 0px 10px 10px 10px;
+    background-color: #050a30;
+    border: solid black 3px;
+    border-radius: 12px;
+    box-shadow:
+        inset 0 2px 3px rgba(255,255,255,0.15), 
+        inset 0 -3px 5px rgba(0,0,0,0.6),
+        0 3px 6px rgba(0,0,0,0.4);
+}
+
+.formSignup .btnSubmit {
+    align-self: center;
+    margin-top: 16px;
+    width: 100px;
+    border-radius: 12px;
+    font-size: 15px;
+    background-color: #cae8ff;
 }
